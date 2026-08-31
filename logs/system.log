@@ -1,0 +1,99 @@
+2026-08-30 17:52:21,298 | WARNING | mediaegis.system | Redis unavailable, using in-memory cache fallback. (Timeout connecting to server)
+2026-08-30 17:52:21,645 | INFO | mediaegis.system | Starting MediAegis AI on 0.0.0.0:8000
+2026-08-30 17:52:48,990 | WARNING | mediaegis.system | Redis unavailable, using in-memory cache fallback. (Timeout connecting to server)
+2026-08-30 17:53:31,089 | INFO | mediaegis.system | [QueryAgent] {'query': 'what are symptoms for headche', 'intent': 'disease_info', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 17:53:31,091 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 17:53:31,091 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what are symptoms for headche'} elapsed_ms=0.0
+2026-08-30 17:53:31,092 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.62
+2026-08-30 17:53:31,093 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what are symptoms for headche', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-30 17:53:31,093 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what are symptoms for headche'} elapsed_ms=0.02
+2026-08-30 17:53:35,022 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what are symptoms for headche', 'top_k': 3} elapsed_ms=3928.72
+2026-08-30 17:53:35,023 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 17:53:35,023 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-30 17:54:23,143 | INFO | mediaegis.system | [QueryAgent] {'query': '"What is hypertension and when should I see a doctor?"', 'intent': 'disease_info', 'entities': ['hypertension'], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 17:54:23,144 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 17:54:23,144 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': '"What is hypertension and when should I see a doctor?"'} elapsed_ms=0.04
+2026-08-30 17:54:23,145 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.65
+2026-08-30 17:54:23,145 | INFO | mediaegis.system | MCP call server=medical_api args={'query': '"What is hypertension and when should I see a doctor?"', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-30 17:54:23,146 | INFO | mediaegis.system | MCP call server=web_search args={'query': '"What is hypertension and when should I see a doctor?"'} elapsed_ms=0.01
+2026-08-30 17:54:27,661 | INFO | mediaegis.system | MCP call server=document_store args={'query': '"What is hypertension and when should I see a doctor?"', 'top_k': 3} elapsed_ms=4515.24
+2026-08-30 17:54:27,662 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 17:54:27,662 | INFO | mediaegis.system | [VerificationAgent] confidence=0.83 sources=3
+2026-08-30 17:55:36,288 | INFO | mediaegis.system | [QueryAgent] {'query': 'chest pain, can\'t breathe" — the Safety Agent should intercept it instantly with an emergency message', 'intent': 'emergency', 'entities': [], 'required_tools': ['database', 'web_search']}
+2026-08-30 17:55:36,288 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'critical', 'is_emergency': True, 'is_blocked': False, 'guardrail_message': 'This may be a medical emergency. Please call your local emergency number immediately (e.g., 911 in the US, 112 in the EU) or go to the nearest emergency department. If you or someone else may be in danger, do not wait.'}
+2026-08-30 17:57:37,746 | INFO | mediaegis.system | [QueryAgent] {'query': 'what are causes for spinal cord pain', 'intent': 'general_health', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 17:57:37,746 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'elevated', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 17:57:37,746 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what are causes for spinal cord pain'} elapsed_ms=0.02
+2026-08-30 17:57:37,747 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.77
+2026-08-30 17:57:37,748 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what are causes for spinal cord pain', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-30 17:57:37,748 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what are causes for spinal cord pain'} elapsed_ms=0.01
+2026-08-30 17:57:39,927 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what are causes for spinal cord pain', 'top_k': 3} elapsed_ms=2178.78
+2026-08-30 17:57:39,928 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 17:57:39,928 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-30 18:00:13,869 | INFO | mediaegis.system | [DocumentStore] ingested 'AA' -> 6 chunks (6 embedded)
+2026-08-30 18:00:32,489 | INFO | mediaegis.system | [QueryAgent] {'query': 'what is RAG', 'intent': 'disease_info', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 18:00:32,489 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 18:00:32,489 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what is RAG'} elapsed_ms=0.0
+2026-08-30 18:00:32,490 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.79
+2026-08-30 18:00:32,491 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what is RAG', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-30 18:00:32,491 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what is RAG'} elapsed_ms=0.0
+2026-08-30 18:00:34,621 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what is RAG', 'top_k': 3} elapsed_ms=2129.42
+2026-08-30 18:00:34,621 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 18:00:34,621 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-30 18:00:51,586 | INFO | mediaegis.system | [QueryAgent] {'query': 'what is LLM', 'intent': 'disease_info', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 18:00:51,586 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 18:00:51,586 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what is LLM'} elapsed_ms=0.0
+2026-08-30 18:00:51,587 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.78
+2026-08-30 18:00:51,588 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what is LLM', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-30 18:00:51,588 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what is LLM'} elapsed_ms=0.01
+2026-08-30 18:00:53,700 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what is LLM', 'top_k': 3} elapsed_ms=2111.74
+2026-08-30 18:00:53,700 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 18:00:53,701 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-30 18:01:09,768 | INFO | mediaegis.system | [QueryAgent] {'query': 'what is AI', 'intent': 'disease_info', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 18:01:09,768 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 18:01:09,768 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what is AI'} elapsed_ms=0.0
+2026-08-30 18:01:09,769 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.59
+2026-08-30 18:01:09,769 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what is AI', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-30 18:01:09,770 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what is AI'} elapsed_ms=0.02
+2026-08-30 18:01:11,844 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what is AI', 'top_k': 3} elapsed_ms=2073.84
+2026-08-30 18:01:11,845 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 18:01:11,845 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-30 18:01:51,440 | INFO | mediaegis.system | [QueryAgent] {'query': 'what is telugu', 'intent': 'disease_info', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-30 18:01:51,440 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-30 18:01:51,440 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what is telugu'} elapsed_ms=0.0
+2026-08-30 18:01:51,441 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '18a9c4f2-a446-4fb5-8111-c53ff25180dc'} elapsed_ms=0.51
+2026-08-30 18:01:51,441 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what is telugu', 'kind': 'disease'} elapsed_ms=0.0
+2026-08-30 18:01:51,442 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what is telugu'} elapsed_ms=0.01
+2026-08-30 18:01:53,545 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what is telugu', 'top_k': 3} elapsed_ms=2102.73
+2026-08-30 18:01:53,545 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-30 18:01:53,545 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-31 13:02:00,493 | WARNING | mediaegis.system | Redis unavailable, using in-memory cache fallback. (Timeout connecting to server)
+2026-08-31 13:02:00,880 | INFO | mediaegis.system | Starting MediAegis AI on 0.0.0.0:8000
+2026-08-31 13:02:27,989 | WARNING | mediaegis.system | Redis unavailable, using in-memory cache fallback. (Timeout connecting to server)
+2026-08-31 13:03:55,707 | INFO | mediaegis.system | [QueryAgent] {'query': 'what are causes for legs swelling', 'intent': 'general_health', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-31 13:03:55,708 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-31 13:03:55,708 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what are causes for legs swelling'} elapsed_ms=0.0
+2026-08-31 13:03:55,709 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '273a481b-8274-4ebd-bc7d-3f94afcceed0'} elapsed_ms=0.61
+2026-08-31 13:03:55,710 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what are causes for legs swelling', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-31 13:03:55,710 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what are causes for legs swelling'} elapsed_ms=0.01
+2026-08-31 13:03:59,861 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what are causes for legs swelling', 'top_k': 3} elapsed_ms=4151.05
+2026-08-31 13:03:59,862 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-31 13:03:59,862 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3
+2026-08-31 13:07:40,326 | INFO | mediaegis.system | [QueryAgent] {'query': 'what is medicine for cough', 'intent': 'drug_info', 'entities': [], 'required_tools': ['database', 'medical_api:drug', 'web_search']}
+2026-08-31 13:07:40,326 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'low', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-31 13:07:40,327 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what is medicine for cough'} elapsed_ms=0.02
+2026-08-31 13:07:40,327 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '273a481b-8274-4ebd-bc7d-3f94afcceed0'} elapsed_ms=0.61
+2026-08-31 13:07:40,329 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what is medicine for cough'} elapsed_ms=0.01
+2026-08-31 13:07:41,654 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what is medicine for cough', 'kind': 'drug'} elapsed_ms=1325.51
+2026-08-31 13:07:42,477 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what is medicine for cough', 'top_k': 3} elapsed_ms=2147.62
+2026-08-31 13:07:42,478 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-31 13:07:42,478 | INFO | mediaegis.system | [VerificationAgent] confidence=0.95 sources=3
+2026-08-31 13:08:16,475 | INFO | mediaegis.system | [QueryAgent] {'query': 'what is the cause of stomach pain', 'intent': 'disease_info', 'entities': [], 'required_tools': ['database', 'medical_api:disease', 'web_search']}
+2026-08-31 13:08:16,475 | INFO | mediaegis.system | [SafetyAgent] {'risk_level': 'elevated', 'is_emergency': False, 'is_blocked': False, 'guardrail_message': None}
+2026-08-31 13:08:16,475 | INFO | mediaegis.system | MCP call server=database args={'action': 'cache_lookup', 'query': 'what is the cause of stomach pain'} elapsed_ms=0.0
+2026-08-31 13:08:16,476 | INFO | mediaegis.system | MCP call server=database args={'action': 'conversation_history', 'session_id': '273a481b-8274-4ebd-bc7d-3f94afcceed0'} elapsed_ms=0.53
+2026-08-31 13:08:16,477 | INFO | mediaegis.system | MCP call server=medical_api args={'query': 'what is the cause of stomach pain', 'kind': 'disease'} elapsed_ms=0.01
+2026-08-31 13:08:16,477 | INFO | mediaegis.system | MCP call server=web_search args={'query': 'what is the cause of stomach pain'} elapsed_ms=0.01
+2026-08-31 13:08:18,659 | INFO | mediaegis.system | MCP call server=document_store args={'query': 'what is the cause of stomach pain', 'top_k': 3} elapsed_ms=2181.77
+2026-08-31 13:08:18,659 | INFO | mediaegis.system | [ToolRouter] executed 5 tool calls
+2026-08-31 13:08:18,660 | INFO | mediaegis.system | [VerificationAgent] confidence=0.87 sources=3

@@ -1,0 +1,22 @@
+2026-08-30 17:53:31,088 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'what are symptoms for headche'}
+2026-08-30 17:53:48,758 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.176}
+2026-08-30 17:54:23,143 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': '"What is hypertension and when should I see a doctor?"'}
+2026-08-30 17:54:35,959 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.49}
+2026-08-30 17:55:36,287 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'chest pain, can\'t breathe" — the Safety Agent should intercept it instantly with an emergency message'}
+2026-08-30 17:55:36,308 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=guardrail_triggered details={'risk_level': 'critical'}
+2026-08-30 17:57:37,745 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'what are causes for spinal cord pain'}
+2026-08-30 17:57:48,690 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.245}
+2026-08-30 18:00:32,489 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'what is RAG'}
+2026-08-30 18:00:41,318 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.318}
+2026-08-30 18:00:51,585 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'what is LLM'}
+2026-08-30 18:01:01,751 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.199}
+2026-08-30 18:01:09,767 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'what is AI'}
+2026-08-30 18:01:22,172 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.091}
+2026-08-30 18:01:51,440 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=query_received details={'query': 'what is telugu'}
+2026-08-30 18:02:01,586 | INFO | mediaegis.audit | session=18a9c4f2-a446-4fb5-8111-c53ff25180dc event=response_generated_stream details={'overall_score': 0.197}
+2026-08-31 13:03:55,705 | INFO | mediaegis.audit | session=273a481b-8274-4ebd-bc7d-3f94afcceed0 event=query_received details={'query': 'what are causes for legs swelling'}
+2026-08-31 13:04:09,723 | INFO | mediaegis.audit | session=273a481b-8274-4ebd-bc7d-3f94afcceed0 event=response_generated_stream details={'overall_score': 0.289}
+2026-08-31 13:07:40,326 | INFO | mediaegis.audit | session=273a481b-8274-4ebd-bc7d-3f94afcceed0 event=query_received details={'query': 'what is medicine for cough'}
+2026-08-31 13:07:49,111 | INFO | mediaegis.audit | session=273a481b-8274-4ebd-bc7d-3f94afcceed0 event=response_generated_stream details={'overall_score': 0.207}
+2026-08-31 13:08:16,475 | INFO | mediaegis.audit | session=273a481b-8274-4ebd-bc7d-3f94afcceed0 event=query_received details={'query': 'what is the cause of stomach pain'}
+2026-08-31 13:08:30,541 | INFO | mediaegis.audit | session=273a481b-8274-4ebd-bc7d-3f94afcceed0 event=response_generated_stream details={'overall_score': 0.2}
