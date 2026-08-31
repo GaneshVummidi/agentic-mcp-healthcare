@@ -1,4 +1,3 @@
-# agentic-mcp-healthcare
 <div align="center">
 
 <img src="frontend/assets/logo.svg" width="90" alt="MediAegis AI logo" />
@@ -98,93 +97,43 @@ LLM call:
 
 ## 🏗️ Architecture
 
-```mermaid
-flowchart TB
-    subgraph UI["User Interface"]
-        User(["User"])
-        Chat["Chat Interface (HTML/CSS/JS)"]
-        Display["Display: Answer, Sources, Confidence, Eval Metrics"]
-        User --> Chat --> Display
-    end
+![MediAegis AI Architecture Diagram](docs/architecture/mediaegis-architecture.png)
 
-    subgraph ORCH["Agent Orchestrator"]
-        direction LR
-        A1["1. Query Agent"]
-        A2["2. Safety Agent"]
-        A3["3. MCP Tool Router"]
-        A7["7. Verification Agent"]
-        A8["8. Answer Agent (Qwen 3B)"]
-        A9["9. Evaluation Engine"]
-        A1 --> A2 --> A3
-        A3 --> MCPC
-        MCPC --> A7 --> A8 --> A9
-    end
+The diagram above is the full target reference architecture. This repository implements
+the complete pipeline end-to-end — Query Agent → Safety Agent → MCP Tool Router → MCP
+Client → Web Search / Medical API / Database / Document Store (RAG) → Verification Agent →
+Answer Agent (Qwen 3B) → Evaluation Engine → Final Response — plus the admin analytics
+dashboard shown as the aggregation of SQLite logs.
 
-    subgraph MCPL["MCP Client and Servers"]
-        MCPC["MCP Client"]
-        S1["Web Search MCP Server"]
-        S2["Medical API MCP Server"]
-        S3["Database MCP Server"]
-        S4["Document Store MCP Server (RAG)"]
-        MCPC --> S1
-        MCPC --> S2
-        MCPC --> S3
-        MCPC --> S4
-    end
-
-    subgraph INFRA["Infrastructure Layer"]
-        Ollama["Ollama (Local): Qwen 3B + nomic-embed-text"]
-        Redis["Redis Cache (TTL, auto-fallback)"]
-        SQLite["SQLite: History, Eval Logs, Prefs, Docs"]
-        Logs["Logging: System, Error, Audit"]
-    end
-
-    subgraph OUT["Final Response"]
-        FR["Answer, Sources, Confidence, Metrics, Disclaimers"]
-    end
-
-    Chat -->|query| A1
-    A9 --> FR --> Display
-
-    A8 -.uses.-> Ollama
-    S4 -.embeds via.-> Ollama
-    S3 -.reads writes.-> SQLite
-    A9 -.writes.-> SQLite
-    ORCH -.caches via.-> Redis
-    ORCH -.logs to.-> Logs
-
-    subgraph ADMIN["Admin Dashboard"]
-        Stats["/admin.html - Charts, Stats, Doc Upload"]
-    end
-    SQLite -.aggregated by.-> Stats
-
-    style UI fill:#EAF6F2,stroke:#0F6E5B
-    style ORCH fill:#F5FBF9,stroke:#1AA88A
-    style MCPL fill:#EAF6F2,stroke:#0F6E5B
-    style INFRA fill:#FFF7E8,stroke:#B7791F
-    style OUT fill:#F5FBF9,stroke:#0F6E5B
-    style ADMIN fill:#EAF6F2,stroke:#1596C8
-```
+> 🚧 **Roadmap note:** the diagram's **Human-in-the-Loop / Escalation Agent** (step 10) and
+> the dedicated immutable **Audit / Compliance Logger** are on the roadmap and not yet wired
+> into the live pipeline — see [Future Improvements](#-future-improvements). Today, high-risk
+> queries are handled by the Safety Agent's guardrails (immediate emergency messaging) and
+> all activity is recorded via the standard system/error/audit logs in
+> `backend/infrastructure/logger.py`.
 
 ### Component responsibilities
 
-| Layer | Component | Responsibility |
-|---|---|---|
-| Agent | Query Agent | Intent detection, entity extraction, tool selection |
-| Agent | Safety Agent | Risk assessment, emergency/harm detection, guardrails |
-| Agent | MCP Tool Router | Selects and plans which MCP tools to call, parallel/sequential |
-| Agent | Verification Agent | Cross-checks sources, scores quality, computes confidence |
-| Agent | Answer Agent | Qwen 3B via Ollama, grounded generation, streaming |
-| Agent | Evaluation Engine | Faithfulness, relevance, hallucination risk, latency scoring |
-| MCP | MCP Client | Connects to servers, lists tools, calls tools, returns results |
-| MCP | Web Search Server | Live/trusted-source web search |
-| MCP | Medical API Server | openFDA drug info + curated disease reference dataset |
-| MCP | Database Server | Cache lookup, conversation history, user preferences |
-| MCP | Document Store Server | RAG: chunk, embed, cosine-similarity search over uploaded docs |
-| Infra | Ollama | Local LLM (Qwen 3B) + embeddings (nomic-embed-text) |
-| Infra | Redis | Query/response cache, TTL-based, in-memory fallback |
-| Infra | SQLite | Conversation history, evaluation logs, user prefs, documents |
-| Infra | Logging | System, error, and audit logs |
+| Layer | Component | Responsibility | Status |
+|---|---|---|---|
+| Agent | Query Agent | Intent detection, entity extraction, tool selection | ✅ Implemented |
+| Agent | Safety Agent | Risk assessment, emergency/harm detection, guardrails | ✅ Implemented |
+| Agent | MCP Tool Router | Selects and plans which MCP tools to call, parallel/sequential | ✅ Implemented |
+| Agent | Verification Agent | Cross-checks sources, scores quality, computes confidence | ✅ Implemented |
+| Agent | Answer Agent | Qwen 3B via Ollama, grounded generation, streaming | ✅ Implemented |
+| Agent | Human-in-the-Loop / Escalation Agent | Routes high-risk / low-confidence responses to human review | 🚧 Roadmap |
+| Agent | Evaluation Engine | Faithfulness, relevance, hallucination risk, latency scoring | ✅ Implemented |
+| MCP | MCP Client | Connects to servers, lists tools, calls tools, returns results | ✅ Implemented |
+| MCP | Web Search Server | Live/trusted-source web search | ✅ Implemented |
+| MCP | Medical API Server | openFDA drug info + curated disease reference dataset | ✅ Implemented |
+| MCP | Database Server | Cache lookup, conversation history, user preferences | ✅ Implemented |
+| MCP | Document Store Server | RAG: chunk, embed, cosine-similarity search over uploaded docs | ✅ Implemented |
+| Infra | Ollama | Local LLM (Qwen 3B) + embeddings (nomic-embed-text) | ✅ Implemented |
+| Infra | Redis | Query/response cache, TTL-based, in-memory fallback | ✅ Implemented |
+| Infra | SQLite / PostgreSQL | Conversation history, evaluation logs, user prefs, documents | ✅ Implemented (SQLite); Postgres path planned |
+| Infra | System / Error / Audit Logging | Structured log files per category | ✅ Implemented |
+| Infra | Immutable Audit / Compliance Logger | Tamper-evident compliance trail (query, tools used, confidence, disclaimers) | 🚧 Roadmap |
+| UI | Admin Dashboard | Charts, stats, document upload/management | ✅ Implemented (`/admin.html`) |
 
 ---
 
@@ -545,6 +494,10 @@ for grounded retrieval, and review the most recent evaluated queries at a glance
 
 ## 🔮 Future Improvements
 
+- [ ] **Human-in-the-Loop / Escalation Agent** — automatically route high-risk or
+      low-confidence responses to a human reviewer before they reach the user
+- [ ] **Immutable Audit / Compliance Logger** — tamper-evident log of every query, tools
+      used, confidence, and disclaimers shown, separate from the general system/error logs
 - [ ] Authentication (JWT) and per-user session isolation
 - [ ] Replace lexical-overlap evaluation with embedding-based or LLM-judge scoring
 - [ ] Formal `pytest` test suite + CI pipeline (GitHub Actions)
