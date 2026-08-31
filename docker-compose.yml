@@ -1,0 +1,16 @@
+version: "3.9"
+
+# Optional: run Redis for the caching layer. The app auto-falls-back to an
+# in-memory cache if Redis isn't available, so this is purely optional.
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: mediaegis-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

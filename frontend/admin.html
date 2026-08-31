@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediAegis AI — Admin Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+<link rel="stylesheet" href="/style.css" />
+<link rel="stylesheet" href="/admin.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body class="admin-body">
+
+<header class="topbar">
+  <div class="brand">
+    <img src="/assets/logo.svg" alt="MediAegis AI logo" class="brand-logo" />
+    <div class="brand-text">
+      <span class="brand-name">MediAegis <span class="accent">AI</span></span>
+      <span class="brand-sub">Admin Analytics Dashboard</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <a href="/" class="nav-link">← Back to Chat</a>
+  </div>
+</header>
+
+<main class="admin-layout">
+
+  <section class="stat-cards">
+    <div class="stat-card">
+      <span class="stat-label">Total Queries</span>
+      <span class="stat-value" id="statTotalQueries">–</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Active Sessions</span>
+      <span class="stat-value" id="statTotalSessions">–</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Documents Ingested</span>
+      <span class="stat-value" id="statTotalDocs">–</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Avg Overall Score</span>
+      <span class="stat-value" id="statOverallScore">–</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Avg Latency</span>
+      <span class="stat-value" id="statLatency">–</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Avg Hallucination Risk</span>
+      <span class="stat-value" id="statHallucination">–</span>
+    </div>
+  </section>
+
+  <section class="charts-grid">
+    <div class="chart-card">
+      <h3>Query Volume (by day)</h3>
+      <canvas id="volumeChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Avg Overall Score (by day)</h3>
+      <canvas id="scoreChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Avg Latency ms (by day)</h3>
+      <canvas id="latencyChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Evaluation Metric Breakdown</h3>
+      <canvas id="metricsChart"></canvas>
+    </div>
+  </section>
+
+  <section class="panel-grid">
+
+    <div class="panel-card">
+      <div class="panel-header">
+        <h3>Hospital Documents (RAG)</h3>
+      </div>
+      <form id="uploadForm" class="upload-row">
+        <input type="text" id="docTitle" placeholder="Document title (optional)" />
+        <input type="file" id="docFile" accept=".txt,.md,.pdf" required />
+        <button type="submit">Upload</button>
+      </form>
+      <div id="uploadStatus" class="upload-status"></div>
+      <table class="data-table" id="docsTable">
+        <thead><tr><th>Title</th><th>Chunks</th><th>Uploaded</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-header">
+        <h3>Recent Queries</h3>
+      </div>
+      <table class="data-table" id="recentTable">
+        <thead><tr><th>Query</th><th>Score</th><th>Hallucination</th><th>Latency</th><th>Time</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="/admin.js"></script>
+</body>
+</html>

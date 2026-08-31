@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MediAegis AI — Agentic Clinical Assistant</title>
+<link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="/assets/logo.svg" alt="MediAegis AI logo" class="brand-logo" />
+    <div class="brand-text">
+      <span class="brand-name">MediAegis <span class="accent">AI</span></span>
+      <span class="brand-sub">Agentic AI · MCP Architecture · Qwen 3B</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <label class="stream-toggle">
+      <input type="checkbox" id="streamToggle" checked />
+      Stream responses
+    </label>
+    <a href="/admin.html" class="nav-link">Admin Dashboard →</a>
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">Checking backend…</span>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- LEFT: Hero / info panel -->
+  <section class="hero-panel">
+    <img src="/assets/hero-hospital.svg" alt="Hospital illustration" class="hero-img" />
+    <h1>Trusted, Verified, Grounded Medical Information</h1>
+    <p class="hero-copy">
+      MediAegis AI orchestrates specialized agents — query understanding, safety
+      screening, MCP tool routing, source verification and evaluation — before a
+      locally-hosted Qwen 3B model drafts every answer. Nothing here replaces a
+      licensed clinician.
+    </p>
+
+    <div class="pipeline-card">
+      <h3>System Flow</h3>
+      <ol class="pipeline-steps">
+        <li><span class="step-badge agent">1</span> Query Agent</li>
+        <li><span class="step-badge agent">2</span> Safety Agent</li>
+        <li><span class="step-badge tool">3</span> MCP Tool Router</li>
+        <li><span class="step-badge tool">4</span> MCP Client → Tools</li>
+        <li><span class="step-badge tool">5</span> Verification Agent</li>
+        <li><span class="step-badge llm">6</span> Qwen 3B Answer Agent</li>
+        <li><span class="step-badge eval">7</span> Evaluation Engine</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer-box">
+      ⚕️ For general education only — not a diagnosis. In an emergency, contact
+      your local emergency number immediately.
+    </div>
+  </section>
+
+  <!-- RIGHT: Chat interface -->
+  <section class="chat-panel">
+    <div class="chat-header">
+      <span>Clinical Assistant Chat</span>
+      <button id="newChatBtn" title="Start new session">＋ New session</button>
+    </div>
+
+    <div id="chatWindow" class="chat-window">
+      <div class="msg assistant">
+        <div class="avatar assistant-avatar">🩺</div>
+        <div class="bubble">
+          Hello, I'm MediAegis AI. Ask me a general health question — for example
+          <em>"What is hypertension and when should I see a doctor?"</em>
+        </div>
+      </div>
+    </div>
+
+    <div id="typingIndicator" class="typing-indicator hidden">
+      <div class="avatar assistant-avatar">🩺</div>
+      <div class="bubble typing"><span></span><span></span><span></span></div>
+    </div>
+
+    <form id="chatForm" class="chat-input-row">
+      <input id="chatInput" type="text" autocomplete="off"
+             placeholder="Describe your health question…" />
+      <button type="submit" id="sendBtn">Send</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  MediAegis AI — Reference implementation of the Agentic AI + MCP architecture.
+  Not a medical device. Not for emergency use.
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>

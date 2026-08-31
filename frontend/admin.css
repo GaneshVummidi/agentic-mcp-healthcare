@@ -1,0 +1,89 @@
+.admin-body{background:var(--teal-50);}
+.nav-link{color:var(--teal-700);text-decoration:none;font-size:13.5px;font-weight:600;}
+.nav-link:hover{text-decoration:underline;}
+
+.admin-layout{
+  max-width:1280px;
+  margin:24px auto;
+  padding:0 24px 40px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+/* stat cards */
+.stat-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));
+  gap:14px;
+}
+.stat-card{
+  background:var(--white);
+  border:1px solid var(--card-border);
+  border-radius:12px;
+  padding:16px 18px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.stat-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+.stat-value{font-size:24px;font-weight:700;color:var(--teal-900);}
+
+/* charts */
+.charts-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+@media (max-width: 800px){ .charts-grid{grid-template-columns:1fr;} }
+.chart-card{
+  background:var(--white);
+  border:1px solid var(--card-border);
+  border-radius:12px;
+  padding:16px 18px;
+  box-shadow:var(--shadow);
+  height:260px;
+}
+.chart-card h3{margin:0 0 10px;font-size:13px;color:var(--teal-700);text-transform:uppercase;letter-spacing:.03em;}
+.chart-card canvas{max-height:200px;}
+
+/* panels */
+.panel-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+@media (max-width: 900px){ .panel-grid{grid-template-columns:1fr;} }
+.panel-card{
+  background:var(--white);
+  border:1px solid var(--card-border);
+  border-radius:12px;
+  padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+.panel-header h3{margin:0 0 12px;font-size:14px;color:var(--teal-900);}
+
+.upload-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.upload-row input[type="text"]{
+  flex:1;min-width:140px;padding:8px 10px;border:1px solid var(--card-border);border-radius:8px;font-size:13px;
+}
+.upload-row input[type="file"]{font-size:12.5px;}
+.upload-row button{
+  background:var(--teal-700);color:white;border:none;padding:8px 14px;border-radius:8px;font-size:13px;cursor:pointer;
+}
+.upload-row button:hover{background:var(--teal-500);}
+.upload-status{font-size:12.5px;color:var(--muted);margin-bottom:10px;min-height:16px;}
+
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table th{
+  text-align:left;color:var(--muted);font-weight:600;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.02em;border-bottom:1px solid var(--card-border);padding:6px 8px;
+}
+.data-table td{padding:8px;border-bottom:1px solid var(--teal-50);vertical-align:top;}
+.data-table td.truncate{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.delete-btn{
+  background:none;border:1px solid var(--card-border);color:var(--danger);
+  border-radius:6px;padding:3px 8px;font-size:11px;cursor:pointer;
+}
+.delete-btn:hover{background:#FDECEA;}
